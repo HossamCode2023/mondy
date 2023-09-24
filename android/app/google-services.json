@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "243907969565",
+    "project_id": "chillout-971ad",
+    "storage_bucket": "chillout-971ad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243907969565:android:c094818b5ed2c1057b3cf4",
+        "android_client_info": {
+          "package_name": "com.example.chil_out"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "243907969565-fa3bsbqibuqbtmsa61m4vcprejn93por.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.chil_out",
+            "certificate_hash": "61677b4bb3feb9fa4008efdd265d46eba7ebb5eb"
+          }
+        },
+        {
+          "client_id": "243907969565-ungr6qpc2i15g73su6lb2n2jfdevlhqr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwc2GyzxrSVR1iNl4TjM1tM2Wt_zrgkLg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "243907969565-ungr6qpc2i15g73su6lb2n2jfdevlhqr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

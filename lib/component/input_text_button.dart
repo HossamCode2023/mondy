@@ -1,0 +1,32 @@
+import 'package:flutter/material.dart';
+
+class InputTextButton extends StatelessWidget {
+  final String title;
+  final Function onClick;
+  final Color color;
+  const InputTextButton({Key? key, required this.title, required this.onClick, required this.color})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      style: TextButton.styleFrom(
+        foregroundColor: Colors.white,
+        backgroundColor: color,
+        minimumSize: const Size(double.maxFinite, 50),
+        padding: const EdgeInsets.symmetric(horizontal: 18.0),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(6.0)),
+        ),
+      ),
+      onPressed: () {
+        FocusScope.of(context).requestFocus(FocusNode());
+        onClick();
+      },
+      child: Text(
+        title,
+        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+      ),
+    );
+  }
+}
