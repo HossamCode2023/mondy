@@ -11,6 +11,7 @@ import '../../functions/alert.dart';
 import '../../route/app_route.dart';
 import '../../theme/app_theme.dart';
 import '../../widget/elevatedButtonUtils.dart';
+import '../../widget/text_utils.dart';
 
 class ChoiceManager extends StatefulWidget {
   const ChoiceManager({super.key});
@@ -66,6 +67,15 @@ class _ChoiceManagerState extends State<ChoiceManager> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Image.asset('assets/images/4957136.jpg'),
+            TextUtils(
+                              text: 'Please choice your title job!',
+                              fontSize: 28.0,
+                              fontWeight: FontWeight.w400,
+                              color: AppTheme.lightPrimaryColor,
+                              decoration: TextDecoration.none,
+                            ),
+                            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

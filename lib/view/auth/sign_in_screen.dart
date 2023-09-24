@@ -270,7 +270,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                     InputOutlineButton(
                         onClick: () {
-                          Get.back();
+                          Get.toNamed('/splash');
                         },
                         title: 'Back'),
                     const SizedBox(
@@ -285,7 +285,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         const Text('I\'m new user, '),
                         InkWell(
                             onTap: () {
-                              Get.off(() => const SignUpScreen());
+                              Get.toNamed('/signUp');
                             },
                             child: const Text(
                               'Sign Up',

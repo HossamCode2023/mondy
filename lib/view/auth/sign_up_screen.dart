@@ -70,206 +70,210 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
     return Scaffold(
       resizeToAvoidBottomInset: false, // for error of keyboard....
-      body: SafeArea(
-          child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Form(
-              key: _formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Spacer(),
-                  const Text(
-                    'Create Account',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 32,
-                    ),
-                  ),
-                  const Text(
-                    'Sign up to started!',
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 22,
-                      letterSpacing: 1.2,
-                    ),
-                  ),
-                  const Spacer(
-                    flex: 3,
-                  ),
-                  InputTextField(
-                    textInputType: TextInputType.name,
-                    color: Colors.black,
-                    title: 'Station Name',
-                    textEditingController: authController.stationName,
-                    validation: validateInputName,
-                  ),
-                  // const SizedBox(
-                  //   height: 2,
-                  // ),
-                  InputTextField(
-                    textInputType: TextInputType.name,
-                    color: Colors.black,
-                    title: 'Manager Name',
-                    textEditingController: authController.managerName,
-                    validation: validateInputName,
-                  ),
-                  // const SizedBox(
-                  //   height: 2,
-                  // ),
-                  InputTextField(
-                    textInputType: TextInputType.phone,
-                    color: Colors.black,
-                    title: 'Manager phone',
-                    textEditingController: authController.managerPhone,
-                    validation: validateInputNumber,
-                  ),
-                  // const SizedBox(
-                  //   height: 2,
-                  // ),
-                  InputTextField(
-                    textInputType: TextInputType.name,
-                    color: Colors.black,
-                    title: 'Deputy Name',
-                    textEditingController: authController.deputyName,
-                    validation: validateInputName,
-                  ),
-                  // const SizedBox(
-                  //   height: 2,
-                  // ),
-                  InputTextField(
-                    textInputType: TextInputType.phone,
-                    color: Colors.black,
-                    title: 'Deputy Phone',
-                    textEditingController: authController.deputyPhone,
-                    validation: validateInputNumber,
-                  ),
-                  // const SizedBox(
-                  //   height: 2,
-                  // ),
-                  InputTextField(
-                    textInputType: TextInputType.name,
-                    color: Colors.black,
-                    title: 'Email',
-                    textEditingController: authController.email,
-                    validation: validateEmail,
-                  ),
-                  // const SizedBox(
-                  //   height: 2,
-                  // ),
-                  InputTextField(
-                    textInputType: TextInputType.name,
-                    color: Colors.black,
-                    title: 'Password',
-                    obsecureText: true,
-                    textEditingController: authController.password,
-                    validation: validatePassword,
-                  ),
-                  // const SizedBox(
-                  //   height: 2,
-                  // ),
-                  InputTextField(
-                    textInputType: TextInputType.name,
-                    color: Colors.black,
-                    title: 'Confirm Password',
-                    obsecureText: true,
-                    textEditingController: authController.confirmPassword,
-                    validation: (String? value) {
-                      if (value == null || value.isEmpty) {
-                        return "This field can't be empty";
-                      } else if (authController.password.text != value) {
-                        return "Confirm password not match";
-                      }
-                      return null;
-                    },
-                  ),
-                  // const SizedBox(
-                  //   height: 2,
-                  // ),
-                  const Spacer(),
-                  InputTextButton(
-                    color: Theme.of(context).primaryColor,
-                    onClick: () async {
-                      if (_formKey.currentState!.validate()) {
-                        try {
-                          final credential = await FirebaseAuth.instance
-                              .createUserWithEmailAndPassword(
-                              
-                            email: authController.email.text,
-                            password: authController.password.text,
-                          );
-                          authController.setUsers(context);
-                          Get.offAllNamed('/signIn');
-                          
-                        } on FirebaseAuthException catch (e) {
-                          if (e.code == 'weak-password') {
-                            //! Alert =========================
-                            alert(
-                               
-                                context: context,
-                                title: 'Error!',
-                                message: 'The password provided is too weak.',
-                                contentType: ContentType.warning);
-
-                            print('The password provided is too weak.');
-                          } else if (e.code == 'email-already-in-use') {
-                            //! Alert =========================
-                            alert(
-                               
-                                context: context,
-                                title: 'Error!',
-                                message:
-                                    'The account already exists for that email.',
-                                contentType: ContentType.warning);
-
-                            print('The account already exists for that email.');
-                          }
-                        } catch (e) {
-                          print(e);
-                        }
-                      }
-                    },
-                    title: 'Sign Up',
-                  ),
-                  const SizedBox(
-                    height: 2,
-                  ),
-                  InputOutlineButton(
-                      onClick: () {
-                        Get.back();
-                      },
-                      title: 'Back'),
-                  const SizedBox(
-                    height: 2,
-                  ),
-                  const Spacer(
-                    flex: 5,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+      body: SingleChildScrollView(
+            child: SizedBox(
+              height: 800,
+              child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Form(
+                  key: _formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text('I\'m already a member, '),
-                      InkWell(
-                          onTap: () {
-                            Get.off(() => const SignInScreen());
+                      const Spacer(),
+                      const Text(
+                        'Create Account',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 32,
+                        ),
+                      ),
+                      const Text(
+                        'Sign up to started!',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 22,
+                          letterSpacing: 1.2,
+                        ),
+                      ),
+                      const Spacer(
+                        flex: 3,
+                      ),
+                      InputTextField(
+                        textInputType: TextInputType.name,
+                        color: Colors.black,
+                        title: 'Station Name',
+                        textEditingController: authController.stationName,
+                        validation: validateInputName,
+                      ),
+                      // const SizedBox(
+                      //   height: 2,
+                      // ),
+                      InputTextField(
+                        textInputType: TextInputType.name,
+                        color: Colors.black,
+                        title: 'Manager Name',
+                        textEditingController: authController.managerName,
+                        validation: validateInputName,
+                      ),
+                      // const SizedBox(
+                      //   height: 2,
+                      // ),
+                      InputTextField(
+                        textInputType: TextInputType.phone,
+                        color: Colors.black,
+                        title: 'Manager phone',
+                        textEditingController: authController.managerPhone,
+                        validation: validateInputNumber,
+                      ),
+                      // const SizedBox(
+                      //   height: 2,
+                      // ),
+                      InputTextField(
+                        textInputType: TextInputType.name,
+                        color: Colors.black,
+                        title: 'Deputy Name',
+                        textEditingController: authController.deputyName,
+                        validation: validateInputName,
+                      ),
+                      // const SizedBox(
+                      //   height: 2,
+                      // ),
+                      InputTextField(
+                        textInputType: TextInputType.phone,
+                        color: Colors.black,
+                        title: 'Deputy Phone',
+                        textEditingController: authController.deputyPhone,
+                        validation: validateInputNumber,
+                      ),
+                      // const SizedBox(
+                      //   height: 2,
+                      // ),
+                      InputTextField(
+                        textInputType: TextInputType.name,
+                        color: Colors.black,
+                        title: 'Email',
+                        textEditingController: authController.email,
+                        validation: validateEmail,
+                      ),
+                      // const SizedBox(
+                      //   height: 2,
+                      // ),
+                      InputTextField(
+                        textInputType: TextInputType.name,
+                        color: Colors.black,
+                        title: 'Password',
+                        obsecureText: true,
+                        textEditingController: authController.password,
+                        validation: validatePassword,
+                      ),
+                      // const SizedBox(
+                      //   height: 2,
+                      // ),
+                      InputTextField(
+                        textInputType: TextInputType.name,
+                        color: Colors.black,
+                        title: 'Confirm Password',
+                        obsecureText: true,
+                        textEditingController: authController.confirmPassword,
+                        validation: (String? value) {
+                          if (value == null || value.isEmpty) {
+                            return "This field can't be empty";
+                          } else if (authController.password.text != value) {
+                            return "Confirm password not match";
+                          }
+                          return null;
+                        },
+                      ),
+                      // const SizedBox(
+                      //   height: 2,
+                      // ),
+                      const Spacer(),
+                      InputTextButton(
+                        color: Theme.of(context).primaryColor,
+                        onClick: () async {
+                          if (_formKey.currentState!.validate()) {
+                            try {
+                              final credential = await FirebaseAuth.instance
+                                  .createUserWithEmailAndPassword(
+                                  
+                                email: authController.email.text,
+                                password: authController.password.text,
+                              );
+                              authController.setUsers(context);
+                              Get.offAllNamed('/signIn');
+                              
+                            } on FirebaseAuthException catch (e) {
+                              if (e.code == 'weak-password') {
+                                //! Alert =========================
+                                alert(
+                                   
+                                    context: context,
+                                    title: 'Error!',
+                                    message: 'The password provided is too weak.',
+                                    contentType: ContentType.warning);
+                      
+                                print('The password provided is too weak.');
+                              } else if (e.code == 'email-already-in-use') {
+                                //! Alert =========================
+                                alert(
+                                   
+                                    context: context,
+                                    title: 'Error!',
+                                    message:
+                                        'The account already exists for that email.',
+                                    contentType: ContentType.warning);
+                      
+                                print('The account already exists for that email.');
+                              }
+                            } catch (e) {
+                              print(e);
+                            }
+                          }
+                        },
+                        title: 'Sign Up',
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      InputOutlineButton(
+                          onClick: () {
+                            Get.back();
                           },
-                          child: const Text(
-                            'Sign In',
-                            style: TextStyle(
-                                color: Colors.blue, fontWeight: FontWeight.bold),
-                          )),
+                          title: 'Back'),
+                      const SizedBox(
+                        height: 2,
+                      ),
+                      const Spacer(
+                        flex: 5,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text('I\'m already a member, '),
+                          InkWell(
+                              onTap: () {
+                                Get.off(() => const SignInScreen());
+                              },
+                              child: const Text(
+                                'Sign In',
+                                style: TextStyle(
+                                    color: Colors.blue, fontWeight: FontWeight.bold),
+                              )),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 2,
+                      ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 2,
-                  ),
-                ],
-              ),
+                ),
+                    ),
             ),
-        ),
-      ));
+          ),
+          );
     
   }
 }
