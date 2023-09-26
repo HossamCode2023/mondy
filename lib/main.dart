@@ -57,7 +57,7 @@ class _MyAppState extends State<MyApp> {
         return GetMaterialApp(
       getPages: AppPage.list,
       initialRoute:FirebaseAuth.instance.currentUser == null ? AppRoute.splash :
-      FirebaseAuth.instance.currentUser!.uid == 'IE4nPpNeaVd43phY8lloUL5icNj1'? AppRoute.siteLayout: AppRoute.dashboard,
+      FirebaseAuth.instance.currentUser!.uid == '8QidrKLM3zMfqpXck8SfwrMXfWe2'? AppRoute.siteLayout: AppRoute.dashboard,
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
       themeMode: ThemeMode.light,
