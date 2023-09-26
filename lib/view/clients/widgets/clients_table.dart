@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../widget/custom_text.dart';
+import '../../../widget/elevatedButtonUtils.dart';
 
 /// Example without datasource
 class Clientstable extends StatelessWidget {
@@ -69,6 +70,7 @@ class Clientstable extends StatelessWidget {
                 DataColumn2(label: Text("Title Jop"), size: ColumnSize.L),
                 DataColumn2(label: Text("Manager Now"), size: ColumnSize.L),
                 DataColumn2(label: Text("Phone Now"), size: ColumnSize.L),
+                DataColumn2(label: Text("Delete Account"), size: ColumnSize.L),
                 
               ],
               rows: List<DataRow>.generate(
@@ -86,6 +88,17 @@ class Clientstable extends StatelessWidget {
                     DataCell(CustomText(text: documents[index]['titleJop'].toString())),
                     DataCell(CustomText(text: documents[index]['managerNow'].toString())),
                     DataCell(CustomText(text: documents[index]['phoneNow'].toString())),
+                    DataCell(ElevatedButtonUtils(
+                      onPressed: (){},
+                      text: 'Delete',
+                      color: AppTheme.dark,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18,
+                      decoration: TextDecoration.none,
+                      paddingHerizontal: 10,
+                      paddingVertical: 10,
+                      primary: AppTheme.lightPrimaryColor,
+                    )),
                     
                   ],
                 ),
